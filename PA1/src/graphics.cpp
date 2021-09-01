@@ -1,5 +1,6 @@
 #include "graphics.h"
 
+
 Graphics::Graphics()
 {
 
@@ -10,7 +11,7 @@ Graphics::~Graphics()
 
 }
 
-bool Graphics::Initialize(int width, int height)
+bool Graphics::Initialize(int width, int height, std::string VertexName_G, std::string FragName_G)
 {
   // Used for the linux OS
   #if !defined(__APPLE__) && !defined(MACOSX)
@@ -49,7 +50,7 @@ bool Graphics::Initialize(int width, int height)
 
   // Set up the shaders
   m_shader = new Shader();
-  if(!m_shader->Initialize())
+  if(!m_shader->Initialize(VertexName_G, FragName_G))
   {
     printf("Shader Failed to Initialize\n");
     return false;

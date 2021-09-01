@@ -80,7 +80,10 @@ Object::~Object()
 void Object::Update(unsigned int dt)
 {
   angle += dt * M_PI/1000;
-  model = glm::rotate(glm::mat4(1.0f), (angle), glm::vec3(0.0, 1.0, 0.0));
+  model = glm::translate(model, glm::vec3(5.0f, 0.0f, 0.0f));  //Makes the cube spin 
+  model = glm::rotate(glm::mat4(1.0f), (angle), glm::vec3(0.0, 20.0, 0.0)); //Rotate the cube about it's own y axis
+  model = glm::translate(model, glm::vec3(5.0f, 0.0f, 0.0f));
+  
 }
 
 glm::mat4 Object::GetModel()

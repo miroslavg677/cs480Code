@@ -1,5 +1,9 @@
 #include "shader.h"
 
+
+std::string VertexNameFinal;
+std::string FragNameFinal;
+
 Shader::Shader()
 {
   m_shaderProg = 0;
@@ -19,8 +23,13 @@ Shader::~Shader()
   }
 }
 
-bool Shader::Initialize()
+bool Shader::Initialize(std::string FragName_S, std::string VertexName_S)
 {
+  VertexNameFinal = VertexName_S;
+  FragNameFinal = FragName_S;
+  std::cerr << "Vertex file name: " << VertexNameFinal << std::endl;
+  std::cerr << "Frag file name: " << FragNameFinal << std::endl; 
+  
   m_shaderProg = glCreateProgram();
 
   if (m_shaderProg == 0) 
@@ -36,7 +45,50 @@ bool Shader::Initialize()
 bool Shader::AddShader(GLenum ShaderType)
 {
   std::string s;
+  std::string line;
+  std::stringstream shader;
 
+  if(ShaderType == GL_VERTEX_SHADER)
+  {
+    std::ifstream ShaderInput(VertexNameFinal);
+    while(getline(ShaderInput, line))
+    {
+      if(line.find("#version 330") != std::string::npos)
+      {
+          shader << line << '\n';
+      }
+      else
+      {
+          shader << line;
+      }
+    }
+    s = shader.str();
+    shader << ' ' << '\n';
+  }
+  else if(ShaderType == GL_FRAGMENT_SHADER)
+  {
+    std::ifstream ShaderInput(FragNameFinal);
+    while(getline(ShaderInput, line))
+    {
+      if(line.find("#version 330") != std::string::npos)
+      {
+          shader << line << '\n';
+      }
+      
+      else
+      {
+        shader << line;
+      }
+    }
+    shader << ' ' << '\n';
+    s =shader.str();
+  }
+ 
+
+  
+ 
+  /*
+  
   if(ShaderType == GL_VERTEX_SHADER)
   {
     s = "#version 330\n \
@@ -58,7 +110,9 @@ bool Shader::AddShader(GLenum ShaderType)
           } \
           ";
   }
-  else if(ShaderType == GL_FRAGMENT_SHADER)
+  */
+  /*
+  if(ShaderType == GL_FRAGMENT_SHADER)
   {
     s = "#version 330\n \
           \
@@ -72,6 +126,10 @@ bool Shader::AddShader(GLenum ShaderType)
           } \
           ";
   }
+  */
+
+
+ 
 
   GLuint ShaderObj = glCreateShader(ShaderType);
 

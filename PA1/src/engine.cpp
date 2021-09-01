@@ -1,6 +1,7 @@
 
 #include "engine.h"
 
+
 Engine::Engine(string name, int width, int height)
 {
   m_WINDOW_NAME = name;
@@ -25,7 +26,7 @@ Engine::~Engine()
   m_graphics = NULL;
 }
 
-bool Engine::Initialize()
+bool Engine::Initialize(std::string VertexName_E, std::string FragName_E)
 {
   // Start a window
   m_window = new Window();
@@ -37,7 +38,7 @@ bool Engine::Initialize()
 
   // Start the graphics
   m_graphics = new Graphics();
-  if(!m_graphics->Initialize(m_WINDOW_WIDTH, m_WINDOW_HEIGHT))
+  if(!m_graphics->Initialize(m_WINDOW_WIDTH, m_WINDOW_HEIGHT, VertexName_E, FragName_E))
   {
     printf("The graphics failed to initialize.\n");
     return false;

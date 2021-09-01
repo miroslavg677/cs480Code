@@ -2,6 +2,10 @@
 #define SHADER_H
 
 #include <vector>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include "string.h"
 
 #include "graphics_headers.h"
 
@@ -10,7 +14,7 @@ class Shader
   public:
     Shader();
     ~Shader();
-    bool Initialize();
+    bool Initialize(std::string VertexName_S, std::string FragName_S);
     void Enable();
     bool AddShader(GLenum ShaderType);
     bool Finalize();

@@ -8,13 +8,14 @@ using namespace std;
 #include "camera.h"
 #include "shader.h"
 #include "object.h"
+#include "string.h"
 
 class Graphics
 {
   public:
     Graphics();
     ~Graphics();
-    bool Initialize(int width, int height);
+    bool Initialize(int width, int height, std::string VertexName_G, std::string FragName_G);
     void Update(unsigned int dt);
     void Render();
 

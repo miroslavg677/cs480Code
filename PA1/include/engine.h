@@ -6,6 +6,7 @@
 
 #include "window.h"
 #include "graphics.h"
+#include "string.h"
 
 class Engine
 {
@@ -13,7 +14,7 @@ class Engine
     Engine(string name, int width, int height);
     Engine(string name);
     ~Engine();
-    bool Initialize();
+    bool Initialize(std::string VertexName_E, std::string FragName_E);
     void Run();
     void Keyboard();
     unsigned int getDT();
