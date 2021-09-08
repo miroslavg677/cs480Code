@@ -1,0 +1,4 @@
+/home/miro/cs480/cs480Georgiev/PA2/build/CMakeFiles/rebuild_cache.dir
+/home/miro/cs480/cs480Georgiev/PA2/build/CMakeFiles/edit_cache.dir
+/home/miro/cs480/cs480Georgiev/PA2/build/CMakeFiles/Tutorial_SUCCESSFUL.dir
+/home/miro/cs480/cs480Georgiev/PA2/build/CMakeFiles/Tutorial.dir
