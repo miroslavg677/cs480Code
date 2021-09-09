@@ -3,11 +3,8 @@ By Miroslav Georgiev
 CS 480 
 9/7/2021
 
-Note the program expects the file path for the project to be the following:
-/home/<Username>/cs480Georgiev/PA2/
-
-if it something different it must be changed in shader.cpp line 49
-since the username will be different it is nessessary to go in and change it
+The shaders have been moved into the Shaders folder
+The program will look for the shaders there
 
 Compilation commands used:
 
@@ -16,6 +13,11 @@ cd build
 cmake ..
 make
 ./Tutorial
+
+To Run the program:
+./Tutorial frag.glsl vert.glsl
+If the command line arguments are not included the program will print instructions on how to 
+run the program
 
 Functionality: 
 

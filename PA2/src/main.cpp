@@ -19,6 +19,16 @@ int main(int argc, char **argv)
     std::string temp1(argv[2]);
     VertexFileName = temp1;
   }
+  else
+  {
+    //Message for the user if no command line arguments are entered
+    std::cerr << "To run this program use the following command:" << std::endl;
+    std::cerr << "----------------------------------------------" << std::endl;
+    std::cerr << "./Tutorial frag.glsl vert.glsl" << std::endl;
+    std::cerr << "grag.glsl is the current Fragmentation Shader" << std::endl;
+    std::cerr << "vert.glsl is the current Vertex Shader" << std::endl;
+    std::cerr << "----------------------------------------------" << std::endl;
+  }
   if(!engine->Initialize(FragFileName, VertexFileName))
   {
     printf("The engine failed to start.\n");

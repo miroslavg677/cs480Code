@@ -46,7 +46,7 @@ bool Shader::AddShader(GLenum ShaderType)
   std::string s;
   std::string line; //Stores the current line being read
   std::stringstream shader; // stores the whole shader string
-  std::string shaderfilepath = "/home/miro/cs480Georgiev/PA2/Shaders/";
+  std::string shaderfilepath = "../Shaders/";
 
   if(ShaderType == GL_VERTEX_SHADER)
   {

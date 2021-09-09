@@ -30,7 +30,8 @@ class Object
     glm::vec3 position;
 
     float angle;
-    float angle2;
+    float angle2;   // Used to pause the cube
+    bool waspaused; // Used to pause the cube
 };
 
 #endif /* OBJECT_H */

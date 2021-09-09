@@ -81,16 +81,17 @@ Object::~Object()
 
 
 
-void Object::Update(unsigned int dt, bool &reverse, bool &paused)
+void Object::Update(unsigned int dt, bool &reverse, bool &paused) // passing in the references to the bool flags
 {
 
   
-  // 
+  //If R is pressed the cube reverses directions 
+  //Uses the references set in engine.cpp
   if(reverse)
   {
   angle -= dt * M_PI/1000;
   }
-  if(!reverse)
+  else
   {
     angle += dt * M_PI/1000;
   }
@@ -102,17 +103,33 @@ void Object::Update(unsigned int dt, bool &reverse, bool &paused)
 
   if(paused)
   {
-    // When the scene is paused the cube stops spinning in it's orbit but continues spinning about it's orbit
-    model = glm::rotate(glm::mat4(1.0f), (0.0f), glm::vec3(0.0, 1.0, 0.0)); //Rotate the cube about the center of it's orbit
-    model = ((glm::translate(model, glm::vec3(5.0f, 0.0f, 0.0f))) * 
-             (glm::rotate(glm::mat4(1.0f), (angle), glm::vec3(0.0, 1.0, 0.0)))); // translate the cube which determines the radius of the orbit
-                                                                                 // and rotate the cube about it's y axis
+    // When the scene is paused the cube stops spinning in it's orbit but continues spinning about it's own y axis
+    //The cube has been paused
+    model = glm::rotate(glm::mat4(1.0f), (angle2), glm::vec3(0.0, 1.0, 0.0))
+          * glm::translate(glm::mat4(1.0f), glm::vec3(7.0f, 0.0f, 0.0f))
+          * glm::rotate(glm::mat4(1.0f), (angle), glm::vec3(0.0, 1.0, 0.0));
+          waspaused = true;
+  }
+
+  else if(!paused && waspaused)
+  {
+    // Only runs for one frame 
+    // Ensures that when the cube starts spinning again afeter being paused 
+    // It is in the same spot as when it stopped spinning
+    model = glm::rotate(glm::mat4(1.0f), (angle2), glm::vec3(0.0, 1.0, 0.0))
+          * glm::translate(glm::mat4(1.0f), glm::vec3(7.0f, 0.0f, 0.0f))
+          * glm::rotate(glm::mat4(1.0f), (angle), glm::vec3(0.0, 1.0, 0.0));
+          waspaused = false;
+          angle = angle2;
   }
   else
   {
     //The cube spins both about its axis and orbit
-    model = glm::rotate(glm::mat4(1.0f), (angle), glm::vec3(0.0, 1.0, 0.0));
-    model = ((glm::translate(model, glm::vec3(5.0f, 0.0f, 0.0f))) * (glm::rotate(glm::mat4(1.0f), (angle), glm::vec3(0.0, 1.0, 0.0))));
+    //Normal not paused behavior
+    model =( glm::rotate(glm::mat4(1.0f), (angle), glm::vec3(0.0, 1.0, 0.0))
+          * glm::translate(glm::mat4(1.0f), glm::vec3(7.0f, 0.0f, 0.0f))
+          * glm::rotate(glm::mat4(1.0f), (angle), glm::vec3(0.0, 1.0, 0.0)));
+    
     angle2 = angle;
   }
   
