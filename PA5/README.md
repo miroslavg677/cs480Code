@@ -4,9 +4,12 @@ For this project, we're using Assimp to load and display models.
 This is an iteration from the previous project, so I'm starting with a copy of PA4
 
 ## Group Project
-My other group members are Miroslav Georgiev and Ryan Rytel.
+The members of our group are:
+John Busse
+Miroslav Georgiev
+Ryan Rytel
 
-###
+### Descripion
 This program uses Assimp to load a model into the program and then spins that model
 so the user can see it from all angles.
 
