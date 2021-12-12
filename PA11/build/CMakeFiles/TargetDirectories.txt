@@ -1,4 +1,0 @@
-/home/miro/cs480/cs480Georgiev/PA11/build/CMakeFiles/rebuild_cache.dir
-/home/miro/cs480/cs480Georgiev/PA11/build/CMakeFiles/edit_cache.dir
-/home/miro/cs480/cs480Georgiev/PA11/build/CMakeFiles/PA11_SUCCESSFUL.dir
-/home/miro/cs480/cs480Georgiev/PA11/build/CMakeFiles/PA11.dir
